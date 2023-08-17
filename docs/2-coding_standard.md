@@ -36,3 +36,13 @@ commitlint
   - npx husky add .husky/commit-msg "npx --no-install commitlint -e $HUSKY_GIT_PARAMS"
 - format
   - <type>: <subject>
+  - feat: add new feature
+  - fix: fix bug
+  - chore: changes do not affect functionality
+  - docs: documents
+  - perf: performance
+  - refactor
+  - test
+
+### typescript
+- create tsconfig.json
