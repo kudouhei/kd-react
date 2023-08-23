@@ -46,3 +46,6 @@ commitlint
 
 ### typescript
 - create tsconfig.json
+
+### rollup
+- pnpm i -D -w rollup

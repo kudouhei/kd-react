@@ -1,4 +1,5 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
@@ -13,8 +14,8 @@
     "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "skipLibCheck": true
-  },
-  "include": ["packages"]
+    "noImplicitReturns": false,
+    "skipLibCheck": true,
+    "baseUrl": "./packages"
+  }
 }
