@@ -26,7 +26,7 @@ A monolithic architecture exists at the very early stage of your project. It has
 - pnpm is a JavaScript dependency management tool that supports monorepos through a set of dedicated commands called pnpm multi.
   - In pnpm, packages are always reused if they are already installed for another project saving a lot of disk space which makes it faster and more efficient than npm.
 
-#### set up with pnpm
+### Set up with pnpm
 1. Install pnpm
    ```npm install -g pnpm```
 2. Initialize a new pnpm workspace  
