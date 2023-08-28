@@ -26,14 +26,14 @@ export const createUpdateQueue = <Action>() => {
 
 export const enqueueUpdate = <Action>(
   updateQueue: UpdateQueue<Action>,
-  update: Update<Action>
+  update: Update<Action>,
 ) => {
   updateQueue.shared.pending = update;
 };
 
 export const processUpdateQueue = <State>(
   baseState: State,
-  pendingUpdate: Update<State> | null
+  pendingUpdate: Update<State> | null,
 ): { memoizedState: State } => {
   const result: ReturnType<typeof processUpdateQueue<State>> = {
     memoizedState: baseState,

@@ -38,6 +38,9 @@ reconciler的工作方式
 - current: 与视图中真实UI对应的FiberNode树
 - workInProgress: 触发更新后，正在reconciler中计算的FiberNode树
 
+这就是React中的"双缓存树"技术, React 中使用"双缓存"来完成Fiber Tree的构建与替换，对应着DOM Tree的创建于与更新。current Fiber树中的Fiber节点被称为current fiber，workInProgress Fiber树中的Fiber节点被称为workInProgress fiber，他们通过alternate属性连接。
+
+
 JSX消费的顺序
 - 以DFS（深度优先遍历）的顺序遍历React Element，意味着：
   - 如果有子节点，遍历子节点
