@@ -19,13 +19,13 @@ export function createContainer(container: Container) {
 
 export function updateContainer(
   element: ReactElementType | null,
-  root: FiberRootNode,
+  root: FiberRootNode
 ) {
   const hostRootFiber = root.current;
   const update = createUpdate<ReactElementType | null>(element);
   enqueueUpdate(
     hostRootFiber.updateQueue as UpdateQueue<ReactElementType | null>,
-    update,
+    update
   );
   scheduleUpdateOnFiber(hostRootFiber);
   return element;
