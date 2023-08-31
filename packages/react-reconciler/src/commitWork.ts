@@ -76,7 +76,7 @@ function getHostParent(fiber: FiberNode): Container | null {
 
 function appendPlacementNodeIntoContainer(
   finishedWork: FiberNode,
-  hostParent: Container
+  hostParent: Container,
 ) {
   // fiber host
   if (finishedWork.tag === HostComponent || finishedWork.tag === HostText) {
