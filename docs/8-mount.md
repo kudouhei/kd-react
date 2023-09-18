@@ -9,6 +9,12 @@
 - 归：completeWork
 
 ### beginWork
+beginWork阶段发生了什么：
+1. 创建节点：根据ReactElement对象创建所有的fiber节点，最终构造出fiber树形结构（设置return和sibling指针）
+2. 给节点打标签：设置fiber.flags
+3. 设置真实DOM的局部状态：设置fiber.stateNode局部状态（如Class类型节点fiber.stateNode=new Class()）
+
+
 对于如下结构的reactElement：
 ```
 <A>
@@ -38,6 +44,17 @@ HostComponent的beginWork工作流程：
 - 创造子fiberNode
 
 HostText没有beginWork工作流程，因为其没有子节点
+
+### CompleteWork
+CompleteWork阶段发生了什么：
+1. 调用completeWork
+   1. 给fiber节点(tag=HostComponent, HostText)创建 DOM 实例, 设置fiber.stateNode局部状态(如tag=HostComponent, HostText节点: fiber.stateNode 指向这个 DOM 实例).
+   2. 为 DOM 节点设置属性, 绑定事件(合成事件原理).
+   3. 设置fiber.flags标记
+2. 把当前 fiber 对象的副作用队列(firstEffect和lastEffect)添加到父节点的副作用队列之后, 更新父节点的firstEffect和lastEffect指针
+3. 识别beginWork阶段设置的fiber.flags, 判断当前 fiber 是否有副作用(增,删,改), 如果有, 需要将当前 fiber 加入到父节点的effects队列, 等待commit阶段处理.
+
+
 
 ### CompleteWork 性能优化策略
 flags分布在不同fiberNode中，如何快速找到他们：

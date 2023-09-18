@@ -141,9 +141,11 @@ function Test() {
 - HostRootFiber对象
   - 属于react-reconciler包，这是 react 应用中的第一个 Fiber 对象, 是 Fiber 树的根节点, 节点的类型是HostRoot
 
-fiber 树构造方式
-1. 初次创建: 在React应用首次启动时, 界面还没有渲染, 此时并不会进入对比过程, 相当于直接构造一棵全新的树.
-2. 对比更新: React应用启动后, 界面已经渲染. 如果再次发生更新, 创建新fiber之前需要和旧fiber进行对比. 最后构造的 fiber 树有可能是全新的, 也可能是部分更新的.
 
 ![](../docs/5-fiber/init.png)
+
+### 双缓冲fiber技术
+在ReactElement转换成fiber树的过程中，内存里同时存在2棵fiber树：
+- 当前界面current fiberNode树。已经被展示出来，挂载在fiberRoot.current上；如果是初次构造，页面还没有渲染，此时界面对应的fiber树为空fiberRoot.current=null
+- workInProgress: 触发更新后，正在reconciler中计算的FiberNode树。即将展示出来，挂载到HostRootFiber.alternate上，正在构造的节点称为workInProgress。当构造完成后，重新渲染页面，最后切换fiberRoot.current = workInProgress, 使得fiberRoot.current重新指向代表当前界面的fiber树
 
