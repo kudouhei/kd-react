@@ -19,9 +19,9 @@ let workInProgressHook: Hook | null = null;
 const { currentDispatcher } = internals;
 
 interface Hook {
-  memoizedState: any;
+  memoizedState: any; // current state value
   updateQueue: unknown;
-  next: Hook | null;
+  next: Hook | null; // next hook
 }
 
 export function renderWithHooks(wip: FiberNode) {
